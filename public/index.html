@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sachin Mamoru · Backend & AI Engineering</title>
+<meta name="description" content="Sachin Mamoru, Associate Technical Lead in Colombo, Sri Lanka. Builds production backend, cloud-native and AI systems with Python, FastAPI, Java, PostgreSQL and AWS.">
+<meta name="author" content="Sachin Mamoru">
+<link rel="canonical" href="https://sachinmamoru.dev/">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Sachin Mamoru · Backend & AI Engineering">
+<meta property="og:description" content="Associate Technical Lead building production backend, cloud-native and AI systems.">
+<meta property="og:url" content="https://sachinmamoru.dev/">
+<meta property="og:image" content="https://sachinmamoru.dev/img/profile.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0E7C7B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E7C7B'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='white' text-anchor='middle'%3ESM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sachin Mamoru",
+  "jobTitle": "Associate Technical Lead, Backend & AI Engineering",
+  "url": "https://sachinmamoru.dev/",
+  "email": "mailto:sachinmamoru@gmail.com",
+  "image": "https://sachinmamoru.dev/img/profile.jpg",
+  "address": {"@type": "PostalAddress", "addressLocality": "Colombo", "addressCountry": "LK"},
+  "alumniOf": ["University of Moratuwa", "University of Westminster", "University of West London"],
+  "sameAs": [
+    "https://linkedin.com/in/sachin-mamoru",
+    "https://github.com/Sachin-Mamoru",
+    "https://www.upwork.com/freelancers/sachinmamoru",
+    "https://sachinmamoru.medium.com/"
+  ]
+}
+</script>
+<style>
+:root {
+  --bg: #FAFAF8; --surface: #FFFFFF; --ink: #14181F; --muted: #5A6170; --line: #E4E6EA;
+  --accent: #0E7C7B; --accent-ink: #FFFFFF; --accent-soft: #E4F2F1;
+  --radius: 14px; --max: 1080px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0D1117; --surface: #151B23; --ink: #E6EAF0; --muted: #9AA4B2; --line: #262E3A;
+    --accent: #3CC4BE; --accent-ink: #0D1117; --accent-soft: #12302F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0D1117; --surface: #151B23; --ink: #E6EAF0; --muted: #9AA4B2; --line: #262E3A;
+  --accent: #3CC4BE; --accent-ink: #0D1117; --accent-soft: #12302F;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.65 Inter, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+h1, h2, h3 { font-family: "Space Grotesk", Inter, sans-serif; line-height: 1.2; margin: 0; letter-spacing: -0.01em; }
+p { margin: 0; }
+a { color: inherit; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 16px; }
+@media (min-width: 720px) { .wrap { padding: 0 32px; } }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--accent); color: var(--accent-ink); padding: 8px 12px; border-radius: 8px; z-index: 10; }
+.skip:focus { left: 8px; }
+
+/* Header */
+header.site {
+  position: sticky; top: 0; z-index: 5; border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(10px);
+}
+header.site .wrap { display: flex; align-items: center; gap: 16px; height: 64px; }
+.brand { font-family: "Space Grotesk", sans-serif; font-weight: 700; text-decoration: none; font-size: 18px; white-space: nowrap; }
+.brand span { color: var(--accent); }
+nav.main { display: flex; gap: 4px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+nav.main::-webkit-scrollbar { display: none; }
+nav.main a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; padding: 6px 10px; border-radius: 8px; white-space: nowrap; }
+nav.main a:hover { color: var(--ink); background: var(--accent-soft); }
+@media (max-width: 760px) { nav.main { display: none; } header.site .btn { margin-left: auto; } }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; font-size: 14px;
+  padding: 10px 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  transition: border-color .15s, transform .15s; white-space: nowrap;
+}
+.btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn svg { width: 16px; height: 16px; flex: none; }
+
+/* Hero */
+.hero { padding: 72px 0 40px; }
+.hero .wrap { display: grid; gap: 40px; align-items: center; }
+@media (min-width: 860px) { .hero .wrap { grid-template-columns: 1fr 240px; } }
+.eyebrow { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.hero h1 { font-size: clamp(34px, 5.4vw, 56px); font-weight: 700; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lede { margin-top: 20px; font-size: 18px; color: var(--muted); max-width: 640px; }
+.hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.socials { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 24px; font-size: 14px; color: var(--muted); }
+.socials a { text-decoration: none; font-weight: 500; }
+.socials a:hover { color: var(--accent); }
+.portrait { justify-self: center; text-align: center; }
+.portrait img {
+  width: 200px; height: 200px; border-radius: 50%; object-fit: cover; object-position: 50% 20%;
+  border: 4px solid var(--surface); box-shadow: 0 0 0 2px var(--accent), 0 18px 40px -18px rgba(0,0,0,.35);
+}
+.portrait p { margin-top: 14px; font-size: 14px; color: var(--muted); }
+@media (max-width: 859px) {
+  .hero { padding-top: 40px; }
+  .hero .wrap { gap: 24px; }
+  .portrait { order: -1; justify-self: start; display: flex; align-items: center; gap: 16px; }
+  .portrait img { width: 96px; height: 96px; }
+  .portrait p { margin: 0; }
+}
+
+/* Stats */
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-top: 8px; }
+@media (min-width: 760px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+.stat { background: var(--surface); padding: 20px; }
+.stat b { display: block; font-family: "Space Grotesk", sans-serif; font-size: 28px; color: var(--accent); line-height: 1.1; }
+.stat span { font-size: 14px; color: var(--muted); }
+
+/* Sections */
+section.block { padding: 64px 0; }
+section.block + section.block { border-top: 1px solid var(--line); }
+.head { margin-bottom: 32px; max-width: 680px; }
+.head h2 { font-size: clamp(26px, 3.4vw, 34px); }
+.head p { margin-top: 10px; color: var(--muted); }
+
+.grid { display: grid; gap: 16px; }
+@media (min-width: 680px) { .grid.two { grid-template-columns: repeat(2, 1fr); } .grid.three { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .grid.three { grid-template-columns: repeat(3, 1fr); } }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px;
+  display: flex; flex-direction: column; gap: 10px; transition: border-color .15s;
+}
+a.card { text-decoration: none; }
+a.card:hover { border-color: var(--accent); }
+.card h3 { font-size: 18px; }
+.card p { color: var(--muted); font-size: 15px; }
+.card .more { margin-top: auto; padding-top: 6px; font-size: 14px; font-weight: 600; color: var(--accent); }
+.icon { width: 40px; height: 40px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; }
+.icon svg { width: 22px; height: 22px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags li { list-style: none; font-size: 12px; font-weight: 500; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); }
+ul.tags { margin: 0; padding: 0; }
+
+/* Timeline */
+.timeline { position: relative; display: grid; gap: 28px; }
+.role { display: grid; gap: 6px 32px; padding-left: 24px; border-left: 2px solid var(--line); position: relative; }
+.role::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); }
+@media (min-width: 860px) { .role { grid-template-columns: 200px 1fr; } }
+.role .when { font-size: 14px; color: var(--muted); font-weight: 500; }
+.role h3 { font-size: 19px; }
+.role .org { color: var(--accent); font-weight: 600; font-size: 15px; margin-top: 2px; }
+.role ul.points { margin: 10px 0 12px; padding-left: 18px; color: var(--muted); }
+.role ul.points li { margin: 4px 0; }
+
+/* Lists */
+.list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.item { display: grid; gap: 4px 24px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+@media (min-width: 760px) { .item { grid-template-columns: 1fr auto; align-items: baseline; } }
+.item h3 { font-size: 17px; font-family: Inter, sans-serif; font-weight: 600; letter-spacing: 0; }
+.item p { color: var(--muted); font-size: 15px; }
+.item a.link { font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: none; white-space: nowrap; }
+.item a.link:hover { text-decoration: underline; }
+
+.split { display: grid; gap: 40px; }
+@media (min-width: 900px) { .split { grid-template-columns: 1fr 1fr; } }
+.split h3.sub { font-size: 20px; margin-bottom: 16px; }
+
+/* Contact */
+.contact { text-align: center; padding: 80px 0; }
+.contact h2 { font-size: clamp(28px, 4vw, 40px); }
+.contact p { color: var(--muted); margin: 14px auto 28px; max-width: 520px; }
+.contact .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 14px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#top">Sachin <span>Mamoru</span></a>
+    <nav class="main" aria-label="Sections">
+      <a href="#work">What I do</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#speaking">Speaking</a>
+      <a href="#research">Research</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn primary" href="Sachin_Mamoru_CV.pdf" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>
+      Download CV
+    </a>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Associate Technical Lead · Backend &amp; AI Engineering</span>
+      <h1>I build backend and AI systems that <em>hold up in production.</em></h1>
+      <p class="lede">I'm Sachin, an engineer with 6+ years across enterprise backend, distributed and AI-enabled systems. I work in Python, FastAPI, Django, Java, PostgreSQL and AWS, and I own features from architecture through deployment and production support. Today I lead backend and AI engineering at Gapstars for Envision Pharma Group.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:sachinmamoru@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          Get in touch
+        </a>
+        <a class="btn" href="#projects">See my work</a>
+      </div>
+      <div class="socials">
+        <a href="https://linkedin.com/in/sachin-mamoru" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/Sachin-Mamoru" rel="noopener">GitHub ↗</a>
+        <a href="https://www.upwork.com/freelancers/sachinmamoru" rel="noopener">Upwork ↗</a>
+        <a href="https://sachinmamoru.medium.com/" rel="noopener">Medium ↗</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <img src="img/profile.jpg" alt="Portrait of Sachin Mamoru" width="200" height="200">
+      <p>Colombo, Sri Lanka</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>6+</b><span>years building software</span></div>
+      <div class="stat"><b>100%</b><span>Job Success on Upwork, Top Rated</span></div>
+      <div class="stat"><b>5</b><span>peer-reviewed publications</span></div>
+      <div class="stat"><b>2025</b><span>Kim Cameron Award recipient</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="work">
+  <div class="wrap">
+    <div class="head">
+      <h2>What I do</h2>
+      <p>Most of my work sits where backend reliability, cloud infrastructure and applied AI meet.</p>
+    </div>
+    <div class="grid two">
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+        <h3>Backend &amp; distributed systems</h3>
+        <p>REST APIs, data models and background processing designed for retries, caching, idempotency and failure recovery.</p>
+        <ul class="tags"><li>Python</li><li>FastAPI</li><li>Django / DRF</li><li>Java</li><li>Spring Boot</li><li>PostgreSQL</li><li>Redis</li><li>Celery</li></ul>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Applied AI engineering</h3>
+        <p>RAG, grounded generation, AI agents, tool calling, structured outputs and evaluation, built into real product workflows.</p>
+        <ul class="tags"><li>LangGraph</li><li>LangChain</li><li>Claude</li><li>OpenAI</li><li>Gemini</li><li>pgvector</li></ul>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a5 5 0 1 1 .9-9.9A6 6 0 0 1 19 10a4 4 0 0 1-1 8H7z"/></svg></div>
+        <h3>Cloud &amp; platform</h3>
+        <p>Services on AWS EKS and Kubernetes, shipped through CI/CD and watched with proper observability.</p>
+        <ul class="tags"><li>AWS</li><li>EKS</li><li>Kubernetes</li><li>Helm</li><li>Terraform</li><li>GitHub Actions</li><li>Dynatrace</li><li>Logfire</li></ul>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>Identity &amp; security</h3>
+        <p>B2B customer identity, multi-tenancy and secure integrations, from nearly four years on WSO2 Identity Server.</p>
+        <ul class="tags"><li>OAuth 2.0</li><li>OIDC</li><li>SAML</li><li>mTLS</li><li>Webhooks</li><li>Multi-tenancy</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="experience">
+  <div class="wrap">
+    <div class="head">
+      <h2>Experience</h2>
+    </div>
+    <div class="timeline">
+      <article class="role">
+        <div class="when">Jan 2026 – Present</div>
+        <div>
+          <h3>Associate Technical Lead, Backend &amp; AI Engineering</h3>
+          <div class="org">Gapstars · Client: Envision Pharma Group</div>
+          <ul class="points">
+            <li>Lead design and hands-on development of production backend and AI services with Python, FastAPI, PostgreSQL, Redis and Celery on AWS EKS.</li>
+            <li>Build AI manuscript-drafting workflows using RAG, grounded generation, tool calling, structured outputs and evaluation.</li>
+            <li>Own features from requirements to production verification, including Helm-based worker deployments monitored with Dynatrace, Sentry and Logfire.</li>
+            <li>Lead architecture discussions and PR reviews, and mentor engineers.</li>
+          </ul>
+          <ul class="tags"><li>FastAPI</li><li>PostgreSQL</li><li>Celery</li><li>EKS</li><li>RAG</li></ul>
+        </div>
+      </article>
+      <article class="role">
+        <div class="when">Feb 2024 – Dec 2025</div>
+        <div>
+          <h3>Senior Software Engineer</h3>
+          <div class="org">WSO2</div>
+          <ul class="points">
+            <li>Led development of enterprise backend and multi-tenant systems in Java, Spring Boot, Python and Django.</li>
+            <li>Designed secure webhook management and event-driven integrations, including mTLS and asynchronous WebSubHub publishing.</li>
+            <li>Profiled identity-service and database bottlenecks with JMeter and JProfiler, then improved queries, indexing and sessions across AWS environments.</li>
+            <li>Built Angular and TypeScript interfaces, reviewed code and mentored engineers.</li>
+          </ul>
+          <ul class="tags"><li>Java</li><li>Spring Boot</li><li>Django</li><li>Angular</li><li>AWS</li></ul>
+        </div>
+      </article>
+      <article class="role">
+        <div class="when">Mar 2022 – Feb 2024</div>
+        <div>
+          <h3>Software Engineer</h3>
+          <div class="org">WSO2</div>
+          <ul class="points">
+            <li>Built backend services and multi-tenant APIs with Java, Spring Boot, Python and Django REST Framework.</li>
+            <li>Developed Organization Management, B2B CIAM and integrations using OAuth 2.0, OIDC, SAML and adaptive authentication.</li>
+          </ul>
+          <ul class="tags"><li>OAuth 2.0</li><li>OIDC</li><li>SAML</li><li>CIAM</li></ul>
+        </div>
+      </article>
+      <article class="role">
+        <div class="when">2026 – Present</div>
+        <div>
+          <h3>Independent AI &amp; Backend Consultant</h3>
+          <div class="org">Upwork</div>
+          <ul class="points">
+            <li>Top Rated, with 100% Job Success and 500+ hours delivered across AI agent engineering, backend systems and enterprise integrations.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="role">
+        <div class="when">Aug 2023 – Present</div>
+        <div>
+          <h3>Visiting Lecturer</h3>
+          <div class="org">University of Moratuwa</div>
+          <ul class="points">
+            <li>Teach Business Intelligence and Analytics to final-year undergraduates, design assessments and evaluate research projects.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="role">
+        <div class="when">Jul 2020 – Jan 2021</div>
+        <div>
+          <h3>Software Engineering Intern</h3>
+          <div class="org">CodeGen International</div>
+          <ul class="points">
+            <li>Built user-behaviour tracking for an enterprise chatbot, and SLA monitoring for a Jira-integrated project-management platform.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="projects">
+  <div class="wrap">
+    <div class="head">
+      <h2>Selected projects</h2>
+      <p>Open-source work and research outside my day job.</p>
+    </div>
+    <div class="grid three">
+      <a class="card" href="https://github.com/Sachin-Mamoru/azure-whatsapp-rag-agent" rel="noopener">
+        <h3>Multilingual WhatsApp RAG agent</h3>
+        <p>A multi-tool agent that routes each question to a PDF knowledge base, web search or conversation memory, and answers in English, Sinhala or Tamil for safety and hazard awareness.</p>
+        <ul class="tags"><li>RAG</li><li>Agents</li><li>Azure Container Apps</li></ul>
+        <span class="more">View on GitHub →</span>
+      </a>
+      <a class="card" href="https://github.com/Sachin-Mamoru/gapstars-multi-agent-starter-kit" rel="noopener">
+        <h3>Multi-agent starter kit</h3>
+        <p>A monorepo starter for multi-agent systems on LangGraph, with a FastAPI backend, Typer CLI, Next.js 15 UI and a PostgreSQL checkpointer.</p>
+        <ul class="tags"><li>LangGraph</li><li>FastAPI</li><li>Next.js</li><li>PostgreSQL</li></ul>
+        <span class="more">View on GitHub →</span>
+      </a>
+      <a class="card" href="https://github.com/Sachin-Mamoru/trustworthy-code-llm-eval" rel="noopener">
+        <h3>TrustworthyCodeLLM</h3>
+        <p>An evaluation framework for code LLMs that scores security, robustness, maintainability and communication using execution tests, static analysis and LLM-ensemble judging.</p>
+        <ul class="tags"><li>LLM evaluation</li><li>Python</li><li>Benchmarks</li></ul>
+        <span class="more">View on GitHub →</span>
+      </a>
+      <a class="card" href="https://ieeexplore.ieee.org/document/10857795" rel="noopener">
+        <h3>IDeploySmart</h3>
+        <p>My MSc research: a machine-learning model that predicts the deployment type of identity servers. Published at IEEE ICITR 2024.</p>
+        <ul class="tags"><li>Machine learning</li><li>Identity servers</li><li>IEEE</li></ul>
+        <span class="more">Read the paper →</span>
+      </a>
+      <a class="card" href="https://github.com/Sachin-Mamoru/error-fix-engine" rel="noopener">
+        <h3>Error Fix Engine</h3>
+        <p>A fully automated site that writes and publishes developer error-fix guides with Gemini, built and deployed by GitHub Actions to GitHub Pages.</p>
+        <ul class="tags"><li>Gemini</li><li>GitHub Actions</li><li>Automation</li></ul>
+        <span class="more">View on GitHub →</span>
+      </a>
+      <a class="card" href="https://github.com/Sachin-Mamoru/devops-ci-iac" rel="noopener">
+        <h3>Static site on AWS with CI/CD and IaC</h3>
+        <p>A React site served from S3 behind a CDN, deployed through CircleCI, with all infrastructure provisioned by Terraform.</p>
+        <ul class="tags"><li>AWS</li><li>Terraform</li><li>CircleCI</li><li>React</li></ul>
+        <span class="more">View on GitHub →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="speaking">
+  <div class="wrap">
+    <div class="head">
+      <h2>Speaking &amp; recognition</h2>
+    </div>
+    <div class="list">
+      <div class="item">
+        <div>
+          <h3>React Summit US 2026 · Selected speaker</h3>
+          <p>“React Meets RAG: Building Production Multilingual AI Agent Interfaces”</p>
+        </div>
+        <a class="link" href="https://reactsummit.us/#person-sachin-mamoru" rel="noopener">Speaker page ↗</a>
+      </div>
+      <div class="item">
+        <div>
+          <h3>Internet Identity Workshop · Oct 2025</h3>
+          <p>Presented “Securing AI Agents in Modern Applications” at the Computer History Museum, Mountain View, CA.</p>
+        </div>
+        <a class="link" href="https://internetidentityworkshop.com/" rel="noopener">IIW ↗</a>
+      </div>
+      <div class="item">
+        <div>
+          <h3>2025 Kim Cameron Award recipient</h3>
+          <p>Attended Authenticate 2025 in Carlsbad, CA, as an award recipient.</p>
+        </div>
+        <a class="link" href="https://diaf.org/news/reflections-from-authenticate-2025-my-journey-as-a-kim-cameron-award-recipient/" rel="noopener">Read my reflections ↗</a>
+      </div>
+      <div class="item">
+        <div>
+          <h3>First place · University of Westminster, 2024</h3>
+          <p>Collaborative project with MSc Business Management students.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div>
+          <h3>Team winner · Hack:Bit 2018</h3>
+          <p>Microcontroller-based hackathon.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="research">
+  <div class="wrap">
+    <div class="head">
+      <h2>Research &amp; publications</h2>
+    </div>
+    <div class="list">
+      <div class="item">
+        <div>
+          <h3>A Blockchain-Based Patient-Centric Access Control Framework for Electronic Health Record Management with Revocation Mechanism</h3>
+          <p>IEEE SCSE, 2026</p>
+        </div>
+        <a class="link" href="https://ieeexplore.ieee.org/document/11499774" rel="noopener">Read ↗</a>
+      </div>
+      <div class="item">
+        <div>
+          <h3>A Participatory Chatbot for Strengthening Urban Flood and Landslide Resilience: Integrating Community Awareness and Planning Decision Support</h3>
+          <p>MDPI Sciforum, 2026</p>
+        </div>
+        <a class="link" href="https://sciforum.net/paper/31118" rel="noopener">Read ↗</a>
+      </div>
+      <div class="item">
+        <div>
+          <h3>IDeploySmart: A Machine Learning-Based Approach for Predicting the Deployment Type of Identity Servers</h3>
+          <p>IEEE ICITR 2024, published 2025</p>
+        </div>
+        <a class="link" href="https://ieeexplore.ieee.org/document/10857795" rel="noopener">Read ↗</a>
+      </div>
+      <div class="item">
+        <div>
+          <h3>Automated Commentary Generation Based on FPS Gameplay Analysis</h3>
+          <p>IEEE ICITR, 2022</p>
+        </div>
+        <a class="link" href="https://ieeexplore.ieee.org/document/9992987" rel="noopener">Read ↗</a>
+      </div>
+      <div class="item">
+        <div>
+          <h3>Conceptual Representation and Evaluation of an FPS Game Commentary Generator</h3>
+          <p>IEEE ICIPRob, 2022</p>
+        </div>
+        <a class="link" href="https://ieeexplore.ieee.org/document/9798735" rel="noopener">Read ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="credentials">
+  <div class="wrap split">
+    <div>
+      <h3 class="sub">Certifications</h3>
+      <div class="list">
+        <div class="item">
+          <div><h3>AWS Certified Solutions Architect – Associate</h3><p>Amazon Web Services · Feb 2026 – Feb 2029</p></div>
+          <a class="link" href="https://www.credly.com/badges/5c52e9f7-666f-4662-bcbd-43a968a09b1d" rel="noopener">Verify ↗</a>
+        </div>
+        <div class="item">
+          <div><h3>Claude Certified Architect – Foundations</h3><p>Anthropic · Jun 2026 – Jun 2027</p></div>
+          <a class="link" href="https://www.credly.com/badges/4809cb22-3d8b-4143-897f-916a79ccbc22/public_url" rel="noopener">Verify ↗</a>
+        </div>
+        <div class="item">
+          <div><h3>WSO2 Certified Identity Server Developer – V6</h3><p>WSO2</p></div>
+          <a class="link" href="https://certification.wso2.com/certificate/CID-03602418" rel="noopener">Verify ↗</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 class="sub">Education</h3>
+      <div class="list">
+        <div class="item">
+          <div><h3>MBA · Merit</h3><p>University of West London, UK · 2024 – 2025</p></div>
+        </div>
+        <div class="item">
+          <div><h3>MSc Advanced Software Engineering · Distinction</h3><p>University of Westminster, UK · 2023 – 2024</p></div>
+        </div>
+        <div class="item">
+          <div><h3>BSc (Hons) Information Technology · First Class, GPA 3.71</h3><p>University of Moratuwa · 2017 – 2021</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block contact" id="contact">
+  <div class="wrap">
+    <h2>Let's build something reliable.</h2>
+    <p>I'm happy to talk about backend architecture, AI agents in production, or a project you need help with.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:sachinmamoru@gmail.com">sachinmamoru@gmail.com</a>
+      <a class="btn" href="https://linkedin.com/in/sachin-mamoru" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://www.upwork.com/freelancers/sachinmamoru" rel="noopener">Hire me on Upwork</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Sachin Mamoru</span>
+    <span><a href="https://github.com/Sachin-Mamoru" rel="noopener">GitHub</a> · <a href="https://sachinmamoru.medium.com/" rel="noopener">Writing on Medium</a></span>
+  </div>
+</footer>
+</body>
+</html>

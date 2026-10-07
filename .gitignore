@@ -1,0 +1,5 @@
+# Source CVs stay local; the published copy is public/Sachin_Mamoru_CV.pdf
+/*.pdf
+.firebase/
+.DS_Store
+.playwright-mcp/
